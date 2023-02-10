@@ -2,7 +2,23 @@
 API built in Kotlin and SpringBoot for builtin board application.
 
 ## API Schema
-TBD
+swagger: http://localhost:8080/swagger-ui/index.html
+
+- GET /v1/healthCheck 
+
+- POST /v1/users
+- GET /v1/users/{user_id}
+- PUT /v1/users/{user_id}
+- DELETE /v1/users/{user_id}
+ 
+- GET /v1/threads
+- POST /v1/threads
+- GET /v1/threads/{thread_id}
+- DELETE /v1/threads/{thread_id}
+
+- POST /v1/comments
+- PUT /v1/comments/{comment_id}
+- DELETE /v1/comments/{comment_id}
 
 ## Database Schema
 ### Users
