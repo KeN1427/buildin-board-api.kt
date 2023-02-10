@@ -1,5 +1,5 @@
 # buildin-board-api.kt
-API build in Kotlin and SpringBoot for buildin board application.
+API built in Kotlin and SpringBoot for builtin board application.
 
 ## API Schema
 TBD
