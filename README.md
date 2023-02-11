@@ -1,5 +1,5 @@
-# buildin-board-api.kt
-API built in Kotlin and SpringBoot for builtin board application.
+# bulletin-board-api.kt
+API built in Kotlin and SpringBoot for bulletin board application.
 
 ## API Schema
 swagger: http://localhost:8080/swagger-ui/index.html
