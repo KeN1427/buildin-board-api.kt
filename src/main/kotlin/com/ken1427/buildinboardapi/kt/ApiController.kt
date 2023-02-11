@@ -1,5 +1,6 @@
 package com.ken1427.buildinboardapi.kt
 
+import com.ken1427.buildinboardapi.kt.request.UserRequest
 import com.ken1427.buildinboardapi.kt.response.HealthCheckResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -27,10 +29,14 @@ class ApiController {
         return ResponseEntity(HealthCheckResponse("hello, $name! Health check succeeded."), HttpStatus.OK)
     }
 
-    @PostMapping("/users")
+    @PostMapping(path = ["/users"], headers = ["Content-Type=application/json"])
     @Operation(summary = "Create a user.")
-    fun createUser(): String {
-        return "Create a user."
+    fun createUser(
+        @RequestBody(required = true)
+        @Parameter(description = "A user information", example = "{username: Bob, mail_address: xyz@example.com}")
+        body: UserRequest
+    ): String {
+        return "${body.userId}, ${body.username}"
     }
 
     @GetMapping("/users/{userId}")
