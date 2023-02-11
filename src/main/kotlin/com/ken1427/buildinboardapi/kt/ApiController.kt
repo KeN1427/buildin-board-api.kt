@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1")
 class ApiController {
-    @GetMapping("/healthCheck")
-    @Operation(summary = "health check")
+    @GetMapping(path = ["/"], headers = ["Content-Type=application/json"])
+    @Operation(summary = "Health check")
     fun healthCheck(
-        @Parameter(description = "your name", required = false)
-        @RequestParam(value = "name", defaultValue = "world")
+        @RequestParam(value = "name", defaultValue = "world", required = false)
+        @Parameter(description = "Your name", example = "Bob")
         name: String
     ): String {
-        return "hello, $name!"
+        return "hello, $name! Health check succeeded."
     }
 
     @PostMapping("/users")
