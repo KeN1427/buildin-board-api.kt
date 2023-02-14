@@ -1,6 +1,6 @@
-package com.ken1427.buildinboardapi.kt.service
+package com.ken1427.bulletinboardapi.kt.service
 
-import com.ken1427.buildinboardapi.kt.request.UserRequest
+import com.ken1427.bulletinboardapi.kt.request.UserRequest
 
 interface UserService {
     fun getUser(userId: Int)

@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.ken1427.buildin-board-api.kt' is invalid and this project uses 'com.ken1427.buildinboardapi.kt' instead.
+* The original package name 'com.ken1427.bulletin-board-api.kt' is invalid and this project uses 'com.ken1427.bulletinboardapi.kt' instead.
 
 # Getting Started
 

@@ -1,4 +1,4 @@
-package com.ken1427.buildinboardapi.kt
+package com.ken1427.bulletinboardapi.kt
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

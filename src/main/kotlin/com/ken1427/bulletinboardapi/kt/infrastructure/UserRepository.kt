@@ -1,6 +1,6 @@
-package com.ken1427.buildinboardapi.kt.infrastructure
+package com.ken1427.bulletinboardapi.kt.infrastructure
 
-import com.ken1427.buildinboardapi.kt.infrastructure.Dao.User
+import com.ken1427.bulletinboardapi.kt.infrastructure.Dao.User
 
 interface UserRepository {
     fun fetchUser(userId: Int)

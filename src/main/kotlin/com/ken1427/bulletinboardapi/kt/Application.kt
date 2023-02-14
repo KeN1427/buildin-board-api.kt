@@ -1,4 +1,4 @@
-package com.ken1427.buildinboardapi.kt
+package com.ken1427.bulletinboardapi.kt
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

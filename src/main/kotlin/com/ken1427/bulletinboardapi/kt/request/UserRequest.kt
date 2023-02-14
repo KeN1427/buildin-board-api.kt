@@ -1,4 +1,4 @@
-package com.ken1427.buildinboardapi.kt.request
+package com.ken1427.bulletinboardapi.kt.request
 
 data class UserRequest (
     val userId: Int?,

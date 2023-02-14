@@ -1,7 +1,7 @@
-package com.ken1427.buildinboardapi.kt
+package com.ken1427.bulletinboardapi.kt.controller
 
-import com.ken1427.buildinboardapi.kt.request.UserRequest
-import com.ken1427.buildinboardapi.kt.response.HealthCheckResponse
+import com.ken1427.bulletinboardapi.kt.request.UserRequest
+import com.ken1427.bulletinboardapi.kt.response.HealthCheckResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import org.springframework.http.HttpStatus
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/v1")
-class ApiController {
+class APIController {
     @GetMapping(path = ["/"])
     @Operation(summary = "Health check")
     fun healthCheck(
@@ -36,6 +36,7 @@ class ApiController {
         @Parameter(description = "A user information", example = "{username: Bob, mail_address: xyz@example.com}")
         body: UserRequest
     ): String {
+
         return "${body.userId}, ${body.username}"
     }
 
