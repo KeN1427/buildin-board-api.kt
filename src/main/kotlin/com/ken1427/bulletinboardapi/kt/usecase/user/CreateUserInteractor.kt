@@ -9,17 +9,18 @@ import java.lang.Exception
 class CreateUserInteractor(
     private val userRepository: UserRepository
 ) : CreateUserUseCase {
-    override fun handle(user: UserRequest): UserResponse {
+    override fun handle(body: UserRequest): UserResponse {
         // Validate the request.
-        val username = user.username ?: throw Exception()
-        val mailAddress = user.mailAddress ?: throw Exception()
+        val username = body.username ?: throw Exception()
+        val mailAddress = body.mailAddress ?: throw Exception()
 
-        val newUser = User(
-            username = username,
-            mailAddress = mailAddress,
-            status = User.Status.ENABLE
+        val result = userRepository.saveAndFlush(
+            User(
+                username = username,
+                mailAddress = mailAddress
+            )
         )
-        val result = userRepository.create(newUser)
+
         return UserResponse.create(result)
     }
 }
