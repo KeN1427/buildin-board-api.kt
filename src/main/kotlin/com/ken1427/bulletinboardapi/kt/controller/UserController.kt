@@ -1,11 +1,8 @@
 package com.ken1427.bulletinboardapi.kt.controller
 
-import com.ken1427.bulletinboardapi.kt.usecase.user.CreateUserUseCase
-import com.ken1427.bulletinboardapi.kt.usecase.user.DeleteUserUseCase
-import com.ken1427.bulletinboardapi.kt.usecase.user.GetUserUseCase
-import com.ken1427.bulletinboardapi.kt.usecase.user.UpdateUserUseCase
-import com.ken1427.bulletinboardapi.kt.usecase.user.UserRequest
-import com.ken1427.bulletinboardapi.kt.usecase.user.UserResponse
+import com.ken1427.bulletinboardapi.kt.service.user.UserRequest
+import com.ken1427.bulletinboardapi.kt.service.user.UserResponse
+import com.ken1427.bulletinboardapi.kt.service.user.UserService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import org.springframework.http.HttpStatus
@@ -23,10 +20,7 @@ import javax.validation.constraints.Null
 @RestController
 @RequestMapping("/v1")
 class UserController(
-    private val createUserUseCase: CreateUserUseCase,
-    private val getUserUseCase: GetUserUseCase,
-    private val updateUserUseCase: UpdateUserUseCase,
-    private val deleteUserUseCase: DeleteUserUseCase
+    private val userService: UserService,
 ) {
     @PostMapping(path = ["/users"], headers = ["Content-Type=application/json"])
     @Operation(summary = "Create a user.")
@@ -35,7 +29,7 @@ class UserController(
         @Parameter(description = "A user information", example = """{"username": "Bob", "mail_address": "xyz@example.com"}""")
         body: UserRequest
     ): ResponseEntity<UserResponse> {
-        val result = createUserUseCase.handle(body)
+        val result = userService.create(body)
         return ResponseEntity(result, HttpStatus.OK)
     }
 
@@ -46,7 +40,7 @@ class UserController(
         @PathVariable("userId")
         userId: String
     ): ResponseEntity<UserResponse> {
-        val result = getUserUseCase.handle(userId.toInt())
+        val result = userService.get(userId.toInt())
         return ResponseEntity(result, HttpStatus.OK)
     }
 
@@ -60,7 +54,7 @@ class UserController(
         @Parameter(description = "A user information", example = "{username: Bob, mail_address: xyz@example.com}")
         body: UserRequest
     ): ResponseEntity<UserResponse> {
-        val result = updateUserUseCase.handle(userId.toInt(), body)
+        val result = userService.update(userId.toInt(), body)
         return ResponseEntity(result, HttpStatus.OK)
     }
 
@@ -71,7 +65,7 @@ class UserController(
         @PathVariable("userId")
         userId: String
     ): ResponseEntity<Null> {
-        deleteUserUseCase.handle(userId.toInt())
+        userService.delete(userId.toInt())
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 }

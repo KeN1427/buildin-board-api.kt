@@ -1,7 +1,6 @@
-package com.ken1427.bulletinboardapi.kt.usecase.user
+package com.ken1427.bulletinboardapi.kt.service.user
 
 data class UserRequest(
-    val userId: Int?,
     val username: String?,
     val mailAddress: String?
 )

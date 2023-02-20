@@ -1,4 +1,4 @@
-package com.ken1427.bulletinboardapi.kt.usecase.user
+package com.ken1427.bulletinboardapi.kt.service.user
 
 import com.ken1427.bulletinboardapi.kt.domain.User
 import java.time.LocalDateTime
