@@ -1,1 +1,1 @@
-rootProject.name = "buildin-board-api.kt"
+rootProject.name = "bulletin-board-api.kt"
