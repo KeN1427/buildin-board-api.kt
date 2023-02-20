@@ -50,7 +50,7 @@ class UserController(
         return ResponseEntity(result, HttpStatus.OK)
     }
 
-    @PutMapping("/users/{userId}")
+    @PutMapping(path = ["/users/{userId}"], headers = ["Content-Type=application/json"])
     @Operation(summary = "Update user information.")
     fun updateUser(
         @Parameter(description = "user id", required = true)
