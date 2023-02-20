@@ -71,6 +71,7 @@ class UserController(
         @PathVariable("userId")
         userId: String
     ): ResponseEntity<Null> {
+        deleteUserUseCase.handle(userId.toInt())
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 }

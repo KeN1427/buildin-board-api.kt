@@ -8,6 +8,6 @@ class DeleteUserInteractor(
     private val userRepository: UserRepository
 ): DeleteUserUseCase {
     override fun handle(userId: Int) {
-        TODO("Not yet implemented")
+        userRepository.deleteById(userId)
     }
 }
