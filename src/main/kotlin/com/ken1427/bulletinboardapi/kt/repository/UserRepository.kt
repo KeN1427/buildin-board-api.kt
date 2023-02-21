@@ -1,6 +1,6 @@
 package com.ken1427.bulletinboardapi.kt.repository
 
-import com.ken1427.bulletinboardapi.kt.domain.User
+import com.ken1427.bulletinboardapi.kt.entity.User
 import com.ken1427.bulletinboardapi.kt.service.user.UserRequest
 
 interface UserRepository {

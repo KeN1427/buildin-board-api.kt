@@ -1,7 +1,7 @@
 package com.ken1427.bulletinboardapi.kt.service.user
 
-import com.ken1427.bulletinboardapi.kt.domain.User
-import com.ken1427.bulletinboardapi.kt.domain.User.Companion.Status
+import com.ken1427.bulletinboardapi.kt.entity.User
+import com.ken1427.bulletinboardapi.kt.entity.User.Companion.Status
 import java.time.LocalDateTime
 
 data class UserResponse(

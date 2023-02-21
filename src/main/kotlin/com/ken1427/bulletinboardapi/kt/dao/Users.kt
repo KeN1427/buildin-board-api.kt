@@ -1,4 +1,4 @@
-package com.ken1427.bulletinboardapi.kt.domain
+package com.ken1427.bulletinboardapi.kt.dao
 
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.datetime

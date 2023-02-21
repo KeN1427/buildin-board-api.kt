@@ -1,5 +1,6 @@
-package com.ken1427.bulletinboardapi.kt.domain
+package com.ken1427.bulletinboardapi.kt.entity
 
+import com.ken1427.bulletinboardapi.kt.dao.Users
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID

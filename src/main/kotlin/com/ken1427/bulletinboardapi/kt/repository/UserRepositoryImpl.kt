@@ -1,7 +1,7 @@
 package com.ken1427.bulletinboardapi.kt.repository
 
-import com.ken1427.bulletinboardapi.kt.domain.User
-import com.ken1427.bulletinboardapi.kt.domain.Users
+import com.ken1427.bulletinboardapi.kt.entity.User
+import com.ken1427.bulletinboardapi.kt.dao.Users
 import com.ken1427.bulletinboardapi.kt.service.user.UserRequest
 import com.ken1427.bulletinboardapi.kt.shared.config.DBConfig
 import org.jetbrains.exposed.dao.flushCache
