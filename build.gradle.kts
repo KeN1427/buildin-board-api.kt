@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+	val exposedVersion = "0.41.1"
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -26,10 +27,15 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.6.14")
 
-	// database
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	runtimeOnly("mysql:mysql-connector-java")
+	// Exposed
+	implementation("org.jetbrains.exposed:exposed-spring-boot-starter:$exposedVersion")
+	implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+	implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+	implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+	implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+	implementation("mysql:mysql-connector-java:8.0.30")
 
+	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

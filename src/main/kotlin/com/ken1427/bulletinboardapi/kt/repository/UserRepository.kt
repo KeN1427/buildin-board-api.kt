@@ -1,8 +1,14 @@
 package com.ken1427.bulletinboardapi.kt.repository
 
 import com.ken1427.bulletinboardapi.kt.domain.User
-import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.stereotype.Repository
+import com.ken1427.bulletinboardapi.kt.service.user.UserRequest
 
-@Repository
-interface UserRepository: JpaRepository<User, Int> {}
+interface UserRepository {
+    fun get(userId: Int): User
+
+    fun create(userData: UserRequest): User
+
+    fun update(userId: Int, userData: UserRequest): User
+
+    fun delete(userId: Int)
+}
