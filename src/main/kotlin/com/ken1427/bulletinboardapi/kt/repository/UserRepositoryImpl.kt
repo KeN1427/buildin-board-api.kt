@@ -31,7 +31,7 @@ class UserRepositoryImpl: UserRepository {
             addLogger(StdOutSqlLogger)
 
             User.find {
-                Users.status eq User.Companion.Status.ENABLE.name
+                Users.status eq User.Companion.Status.ACTIVE.name
             }.map { it }
         }
     }
@@ -47,7 +47,7 @@ class UserRepositoryImpl: UserRepository {
             val newUser = User.new {
                 this.username = username
                 this.mailAddress = mailAddress
-                this.status = User.Companion.Status.ENABLE.name
+                this.status = User.Companion.Status.ACTIVE.name
             }
             flushCache()
 

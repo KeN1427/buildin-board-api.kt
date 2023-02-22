@@ -8,8 +8,8 @@ import org.jetbrains.exposed.dao.id.EntityID
 class User(id: EntityID<Int>): IntEntity(id) {
     companion object : IntEntityClass<User>(Users) {
         enum class Status {
-            ENABLE,
-            DISABLE
+            ACTIVE,
+            INACTIVE
         }
 
         enum class Action {

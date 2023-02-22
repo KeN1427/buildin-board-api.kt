@@ -37,8 +37,8 @@ class UserServiceImpl(
 
     override fun updateStatus(userId: Int, action: String) {
         val status = when(User.Companion.Action.valueOf(action.uppercase())) {
-            User.Companion.Action.ACTIVATE -> User.Companion.Status.ENABLE
-            User.Companion.Action.INACTIVATE -> User.Companion.Status.DISABLE
+            User.Companion.Action.ACTIVATE -> User.Companion.Status.ACTIVE
+            User.Companion.Action.INACTIVATE -> User.Companion.Status.INACTIVE
         }
         userRepository.updateStatus(userId, status.name)
     }
