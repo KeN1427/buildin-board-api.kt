@@ -1,5 +1,6 @@
 package com.ken1427.bulletinboardapi.kt.service.user
 
+import com.ken1427.bulletinboardapi.kt.entity.User
 import com.ken1427.bulletinboardapi.kt.repository.UserRepository
 import org.springframework.stereotype.Service
 
@@ -9,6 +10,7 @@ class UserServiceImpl(
 ): UserService {
     override fun get(userId: Int): UserResponse {
         val user = userRepository.get(userId)
+
         return UserResponse.create(user)
     }
 
@@ -26,5 +28,13 @@ class UserServiceImpl(
 
     override fun delete(userId: Int) {
         userRepository.delete(userId)
+    }
+
+    override fun updateStatus(userId: Int, action: String) {
+        val status = when(User.Companion.Action.valueOf(action.uppercase())) {
+            User.Companion.Action.ACTIVATE -> User.Companion.Status.ENABLE
+            User.Companion.Action.INACTIVATE -> User.Companion.Status.DISABLE
+        }
+        userRepository.updateStatus(userId, status.name)
     }
 }

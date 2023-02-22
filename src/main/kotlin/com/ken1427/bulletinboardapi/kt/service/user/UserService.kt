@@ -8,4 +8,6 @@ interface UserService {
     fun update(userId: Int, userData: UserRequest): UserResponse
 
     fun delete(userId: Int)
+
+    fun updateStatus(userId: Int, action: String)
 }

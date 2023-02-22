@@ -11,6 +11,11 @@ class User(id: EntityID<Int>): IntEntity(id) {
             ENABLE,
             DISABLE
         }
+
+        enum class Action {
+            ACTIVATE,
+            INACTIVATE
+        }
     }
 
     var username by Users.username

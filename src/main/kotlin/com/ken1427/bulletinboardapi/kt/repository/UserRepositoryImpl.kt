@@ -56,6 +56,17 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
+    override fun updateStatus(userId: Int, status: String) {
+        Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
+        return transaction {
+            addLogger(StdOutSqlLogger)
+
+            User.find { Users.id eq userId }.single().also { user ->
+                user.status = status
+            }
+        }
+    }
+
     override fun delete(userId: Int) {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         transaction {

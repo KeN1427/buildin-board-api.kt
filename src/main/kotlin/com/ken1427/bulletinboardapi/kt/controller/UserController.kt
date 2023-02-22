@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.constraints.Null
 
@@ -30,6 +31,7 @@ class UserController(
         body: UserRequest
     ): ResponseEntity<UserResponse> {
         val result = userService.create(body)
+
         return ResponseEntity(result, HttpStatus.OK)
     }
 
@@ -41,6 +43,7 @@ class UserController(
         userId: String
     ): ResponseEntity<UserResponse> {
         val result = userService.get(userId.toInt())
+
         return ResponseEntity(result, HttpStatus.OK)
     }
 
@@ -55,6 +58,7 @@ class UserController(
         body: UserRequest
     ): ResponseEntity<UserResponse> {
         val result = userService.update(userId.toInt(), body)
+
         return ResponseEntity(result, HttpStatus.OK)
     }
 
@@ -66,6 +70,22 @@ class UserController(
         userId: String
     ): ResponseEntity<Null> {
         userService.delete(userId.toInt())
+
         return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
+
+    @PutMapping("/users/{userId}/status")
+    @Operation(summary = "Update user status.")
+    fun updateUserStatus(
+        @Parameter(description = "user id", required = true)
+        @PathVariable("userId")
+        userId: String,
+        @RequestParam(value = "action", defaultValue = "activate", required = false)
+        @Parameter(description = "activate or inactivate user status", example = "activate/inactivate")
+        action: String
+    ): ResponseEntity<Null> {
+        userService.updateStatus(userId.toInt(), action)
+
+        return ResponseEntity(HttpStatus.OK)
     }
 }

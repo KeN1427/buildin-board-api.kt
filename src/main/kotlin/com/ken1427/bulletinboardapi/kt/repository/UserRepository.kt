@@ -10,5 +10,7 @@ interface UserRepository {
 
     fun update(userId: Int, userData: UserRequest): User
 
+    fun updateStatus(userId: Int, status: String)
+
     fun delete(userId: Int)
 }
