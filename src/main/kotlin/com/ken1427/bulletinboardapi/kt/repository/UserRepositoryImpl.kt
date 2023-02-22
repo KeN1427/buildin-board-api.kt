@@ -25,6 +25,17 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
+    override fun getActiveUsers(): List<User> {
+        Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
+        return transaction {
+            addLogger(StdOutSqlLogger)
+
+            User.find {
+                Users.status eq User.Companion.Status.ENABLE.name
+            }.map { it }
+        }
+    }
+
     override fun create(userData: UserRequest): User {
         val username = userData.username ?: throw Exception()
         val mailAddress = userData.mailAddress ?: throw Exception()

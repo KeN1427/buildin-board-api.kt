@@ -14,6 +14,11 @@ class UserServiceImpl(
         return UserResponse.create(user)
     }
 
+    override fun getActiveUsers(): List<UserResponse> {
+        val users = userRepository.getActiveUsers()
+        return users.map { UserResponse.create(it) }
+    }
+
     override fun create(userData: UserRequest): UserResponse {
         val newUser = userRepository.create(userData)
 

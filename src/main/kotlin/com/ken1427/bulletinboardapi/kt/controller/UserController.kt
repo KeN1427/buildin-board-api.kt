@@ -23,6 +23,13 @@ import javax.validation.constraints.Null
 class UserController(
     private val userService: UserService,
 ) {
+    @GetMapping("/users")
+    @Operation(summary = "Get all active users information.")
+    fun getAllActiveUsers(): ResponseEntity<List<UserResponse>> {
+        val result = userService.getActiveUsers()
+
+        return ResponseEntity(result, HttpStatus.OK)
+    }
     @PostMapping(path = ["/users"], headers = ["Content-Type=application/json"])
     @Operation(summary = "Create a user.")
     fun createUser(
