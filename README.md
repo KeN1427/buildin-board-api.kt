@@ -6,10 +6,12 @@ swagger: http://localhost:8080/swagger-ui/index.html
 
 - GET /v1/healthCheck 
 
+- GET /v1/users
 - POST /v1/users
 - GET /v1/users/{user_id}
 - PUT /v1/users/{user_id}
 - DELETE /v1/users/{user_id}
+- PUT /v1/users/{user_id}/status
  
 - GET /v1/threads
 - POST /v1/threads
