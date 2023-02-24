@@ -30,6 +30,7 @@ class UserController(
 
         return ResponseEntity(result, HttpStatus.OK)
     }
+
     @PostMapping(path = ["/users"], headers = ["Content-Type=application/json"])
     @Operation(summary = "Create a user.")
     fun createUser(
