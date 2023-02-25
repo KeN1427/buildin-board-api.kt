@@ -10,24 +10,21 @@ class UserServiceImpl(
 ): UserService {
     override fun get(userId: Int): UserResponse {
         val user = userRepository.get(userId)
-
         return UserResponse.create(user)
     }
 
-    override fun getActiveUsers(): List<UserResponse> {
-        val users = userRepository.getActiveUsers()
+    override fun getAll(): List<UserResponse> {
+        val users = userRepository.getAll()
         return users.map { UserResponse.create(it) }
     }
 
     override fun create(userData: UserRequest): UserResponse {
         val newUser = userRepository.create(userData)
-
         return UserResponse.create(newUser)
     }
 
     override fun update(userId: Int, userData: UserRequest): UserResponse {
         val updatedUser = userRepository.update(userId, userData)
-
         return UserResponse.create(updatedUser)
     }
 
@@ -35,11 +32,8 @@ class UserServiceImpl(
         userRepository.delete(userId)
     }
 
-    override fun updateStatus(userId: Int, action: String) {
-        val status = when(User.Companion.Action.valueOf(action.uppercase())) {
-            User.Companion.Action.ACTIVATE -> User.Companion.Status.ACTIVE
-            User.Companion.Action.INACTIVATE -> User.Companion.Status.INACTIVE
-        }
-        userRepository.updateStatus(userId, status.name)
+    override fun restore(userId: Int): UserResponse {
+        val user = userRepository.restore(userId)
+        return UserResponse.create(user)
     }
 }

@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1")
 class CommentController {
-    @PostMapping("/comments")
+    @PostMapping("/threads/{threadId}/comments")
     @Operation(summary = "Create a comment.")
     fun createComment(): String {
         return "Create a comment."
     }
 
-    @PutMapping("/comments/{commentId}")
+    @PutMapping("/threads/{threadId}/comments/{commentId}")
     @Operation(summary = "Update a comment.")
     fun updateComment(
         @Parameter(description = "comment id", required = true)
@@ -28,7 +28,7 @@ class CommentController {
         return "Update a comment."
     }
 
-    @DeleteMapping("/comments/{commentId}")
+    @DeleteMapping("/threads/{threadId}/comments/{commentId}")
     @Operation(summary = "Delete a comment.")
     fun deleteComment(
         @Parameter(description = "comment id", required = true)

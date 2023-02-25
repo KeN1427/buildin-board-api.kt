@@ -26,12 +26,12 @@ class UserController(
     @GetMapping("/users")
     @Operation(summary = "Get all active users information.")
     fun getAllActiveUsers(): ResponseEntity<List<UserResponse>> {
-        val result = userService.getActiveUsers()
+        val result = userService.getAll()
 
         return ResponseEntity(result, HttpStatus.OK)
     }
 
-    @PostMapping(path = ["/users"], headers = ["Content-Type=application/json"])
+    @PostMapping("/users", headers = ["Content-Type=application/json"])
     @Operation(summary = "Create a user.")
     fun createUser(
         @RequestBody(required = true)
@@ -55,7 +55,7 @@ class UserController(
         return ResponseEntity(result, HttpStatus.OK)
     }
 
-    @PutMapping(path = ["/users/{userId}"], headers = ["Content-Type=application/json"])
+    @PutMapping("/users/{userId}", headers = ["Content-Type=application/json"])
     @Operation(summary = "Update user information.")
     fun updateUser(
         @Parameter(description = "user id", required = true)
@@ -82,7 +82,7 @@ class UserController(
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
-    @PutMapping("/users/{userId}/status")
+    @PutMapping("/users/{userId}/")
     @Operation(summary = "Update user status.")
     fun updateUserStatus(
         @Parameter(description = "user id", required = true)

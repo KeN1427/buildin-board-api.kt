@@ -3,7 +3,7 @@ package com.ken1427.bulletinboardapi.kt.service.user
 interface UserService {
     fun get(userId: Int): UserResponse
 
-    fun getActiveUsers(): List<UserResponse>
+    fun getAll(): List<UserResponse>
 
     fun create(userData: UserRequest): UserResponse
 
@@ -11,5 +11,5 @@ interface UserService {
 
     fun delete(userId: Int)
 
-    fun updateStatus(userId: Int, action: String)
+    fun restore(userId: Int): UserResponse
 }

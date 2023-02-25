@@ -25,7 +25,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
-    override fun getActiveUsers(): List<User> {
+    override fun getAll(): List<User> {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         return transaction {
             addLogger(StdOutSqlLogger)
@@ -67,24 +67,24 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
-    override fun updateStatus(userId: Int, status: String) {
-        Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
-        return transaction {
-            addLogger(StdOutSqlLogger)
-
-            User.find { Users.id eq userId }.single().also { user ->
-                user.status = status
-            }
-        }
-    }
-
     override fun delete(userId: Int) {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         transaction {
             addLogger(StdOutSqlLogger)
 
             User.find { Users.id eq userId }.single().also { user ->
-                user.delete()
+                user.status = User.Companion.Status.INACTIVE.name
+            }
+        }
+    }
+
+    override fun restore(userId: Int): User {
+        Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
+        return transaction {
+            addLogger(StdOutSqlLogger)
+
+            User.find { Users.id eq userId }.single().also { user ->
+                user.status = User.Companion.Status.ACTIVE.name
             }
         }
     }

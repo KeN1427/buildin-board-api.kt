@@ -43,5 +43,4 @@ class ThreadController {
     ): String {
         return "Delete a thread and comments in the thread."
     }
-
 }
