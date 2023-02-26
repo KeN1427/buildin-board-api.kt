@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.constraints.Null
 
@@ -82,17 +81,14 @@ class UserController(
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
-    @PutMapping("/users/{userId}/")
-    @Operation(summary = "Update user status.")
+    @PostMapping("/users/{userId}")
+    @Operation(summary = "Restore a user.")
     fun updateUserStatus(
         @Parameter(description = "user id", required = true)
         @PathVariable("userId")
         userId: String,
-        @RequestParam(value = "action", defaultValue = "activate", required = false)
-        @Parameter(description = "activate or inactivate user status", example = "activate/inactivate")
-        action: String
     ): ResponseEntity<Null> {
-        userService.updateStatus(userId.toInt(), action)
+        userService.restore(userId.toInt())
 
         return ResponseEntity(HttpStatus.OK)
     }
