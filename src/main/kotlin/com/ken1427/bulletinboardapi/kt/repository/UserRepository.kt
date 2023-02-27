@@ -4,15 +4,15 @@ import com.ken1427.bulletinboardapi.kt.entity.User
 import com.ken1427.bulletinboardapi.kt.service.user.UserRequest
 
 interface UserRepository {
-    fun get(userId: Int): User
+    fun getUser(userId: Int): User
 
-    fun getAll(): List<User>
+    fun getActiveUsers(): List<User>
 
-    fun create(userData: UserRequest): User
+    fun createUser(userData: UserRequest): User
 
-    fun update(userId: Int, userData: UserRequest): User
+    fun updateUser(userId: Int, userData: UserRequest): User
 
-    fun delete(userId: Int)
+    fun deleteUser(userId: Int)
 
-    fun restore(userId: Int): User
+    fun restoreUser(userId: Int): User
 }

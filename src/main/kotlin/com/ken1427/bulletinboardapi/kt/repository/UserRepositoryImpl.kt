@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository
 class UserRepositoryImpl: UserRepository {
     @Autowired
     lateinit var dbConfig: DBConfig
-    override fun get(userId: Int): User {
+    override fun getUser(userId: Int): User {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         return transaction {
             addLogger(StdOutSqlLogger)
@@ -25,7 +25,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
-    override fun getAll(): List<User> {
+    override fun getActiveUsers(): List<User> {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         return transaction {
             addLogger(StdOutSqlLogger)
@@ -36,7 +36,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
-    override fun create(userData: UserRequest): User {
+    override fun createUser(userData: UserRequest): User {
         val username = userData.username ?: throw Exception()
         val mailAddress = userData.mailAddress ?: throw Exception()
 
@@ -55,7 +55,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
-    override fun update(userId: Int, userData: UserRequest): User {
+    override fun updateUser(userId: Int, userData: UserRequest): User {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         return transaction {
             addLogger(StdOutSqlLogger)
@@ -67,7 +67,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
-    override fun delete(userId: Int) {
+    override fun deleteUser(userId: Int) {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         transaction {
             addLogger(StdOutSqlLogger)
@@ -78,7 +78,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
-    override fun restore(userId: Int): User {
+    override fun restoreUser(userId: Int): User {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         return transaction {
             addLogger(StdOutSqlLogger)
