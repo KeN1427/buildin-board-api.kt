@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository
 class ThreadRepositoryImpl: ThreadRepository {
     @Autowired
     lateinit var dbConfig: DBConfig
-    override fun get(threadId: Int): Thread {
+    override fun getThread(threadId: Int): Thread {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         return transaction {
             addLogger(StdOutSqlLogger)
@@ -35,7 +35,7 @@ class ThreadRepositoryImpl: ThreadRepository {
         }
     }
 
-    override fun create(userId: Int): Thread {
+    override fun createThread(userId: Int): Thread {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         return transaction {
             addLogger(StdOutSqlLogger)
@@ -50,7 +50,7 @@ class ThreadRepositoryImpl: ThreadRepository {
         }
     }
 
-    override fun delete(threadId: Int) {
+    override fun deleteThread(threadId: Int) {
         Database.connect(dbConfig.url, dbConfig.driverClassName, dbConfig.username, dbConfig.password)
         transaction {
             addLogger(StdOutSqlLogger)
