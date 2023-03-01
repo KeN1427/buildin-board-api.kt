@@ -1,7 +1,7 @@
 package com.ken1427.bulletinboardapi.kt.repository
 
 import com.ken1427.bulletinboardapi.kt.entity.User
-import com.ken1427.bulletinboardapi.kt.service.user.UserRequest
+import com.ken1427.bulletinboardapi.kt.usecase.user.UserRequest
 
 interface UserRepository {
     fun getUser(userId: Int): User

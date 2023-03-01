@@ -1,4 +1,4 @@
-package com.ken1427.bulletinboardapi.kt.service.user
+package com.ken1427.bulletinboardapi.kt.usecase.user
 
 data class UserRequest(
     val username: String?,

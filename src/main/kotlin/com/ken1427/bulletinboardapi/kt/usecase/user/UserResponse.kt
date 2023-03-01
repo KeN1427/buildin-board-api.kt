@@ -1,4 +1,4 @@
-package com.ken1427.bulletinboardapi.kt.service.user
+package com.ken1427.bulletinboardapi.kt.usecase.user
 
 import com.ken1427.bulletinboardapi.kt.entity.User
 import com.ken1427.bulletinboardapi.kt.entity.User.Companion.Status
