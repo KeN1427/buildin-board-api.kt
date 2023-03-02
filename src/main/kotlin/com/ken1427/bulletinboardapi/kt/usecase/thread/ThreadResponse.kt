@@ -1,4 +1,4 @@
-package com.ken1427.bulletinboardapi.kt.service.thread
+package com.ken1427.bulletinboardapi.kt.usecase.thread
 
 import com.ken1427.bulletinboardapi.kt.entity.Thread
 import java.time.LocalDateTime
