@@ -11,8 +11,8 @@ interface CreateThreadUseCase {
 
 class CreateThreadUseCaseImpl(
     private val threadRepository: ThreadRepository
-): CreateUserUseCase {
-    override fun handle(userData: UserRequest): UserResponse {
+): CreateThreadUseCase {
+    override fun handle(userId: Int) {
         TODO("Not yet implemented")
     }
 }
