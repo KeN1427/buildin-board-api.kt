@@ -10,6 +10,10 @@ class DeleteThreadUseCaseImpl(
     private val threadRepository: ThreadRepository
 ): DeleteThreadUseCase {
     override fun handle(threadId: Int) {
-        TODO("Not yet implemented")
+        try {
+            threadRepository.deleteThread(threadId)
+        } catch (e: Exception) {
+            throw e
+        }
     }
 }

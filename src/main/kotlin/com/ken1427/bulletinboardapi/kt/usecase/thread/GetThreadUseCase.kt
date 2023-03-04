@@ -3,14 +3,20 @@ package com.ken1427.bulletinboardapi.kt.usecase.thread
 import com.ken1427.bulletinboardapi.kt.repository.ThreadRepository
 
 interface GetThreadUseCase {
-    fun handle(threadId: Int)
+    fun handle(threadId: Int): ThreadResponse
 }
 
 class GetThreadUseCaseImpl(
     private val threadRepository: ThreadRepository
 ): GetThreadUseCase {
-    override fun handle(threadId: Int) {
-        TODO("Not yet implemented")
+    override fun handle(threadId: Int): ThreadResponse {
+        val thread = try {
+            threadRepository.getThread(threadId)
+        } catch (e: Exception) {
+            throw e
+        }
+
+        return ThreadResponse.create(thread)
     }
 
 }
