@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1")
 class HealthCheckController {
-    @GetMapping(path = ["/healthCheck"])
+    @GetMapping("/healthCheck")
     @Operation(summary = "Health check")
     fun healthCheck(
         @RequestParam(value = "name", defaultValue = "world", required = false)
