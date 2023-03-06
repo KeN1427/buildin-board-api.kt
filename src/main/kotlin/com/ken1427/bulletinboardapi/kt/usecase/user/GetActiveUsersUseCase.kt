@@ -1,11 +1,13 @@
 package com.ken1427.bulletinboardapi.kt.usecase.user
 
 import com.ken1427.bulletinboardapi.kt.repository.UserRepository
+import org.springframework.stereotype.Service
 
 interface GetActiveUsersUseCase {
     fun handle(): List<UserResponse>
 }
 
+@Service
 class GetActiveUsersUseCaseImpl(
     private val userRepository: UserRepository
 ): GetActiveUsersUseCase {

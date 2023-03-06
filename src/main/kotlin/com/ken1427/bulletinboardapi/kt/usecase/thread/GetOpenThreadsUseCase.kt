@@ -1,11 +1,13 @@
 package com.ken1427.bulletinboardapi.kt.usecase.thread
 
 import com.ken1427.bulletinboardapi.kt.repository.ThreadRepository
+import org.springframework.stereotype.Service
 
 interface GetOpenThreadsUseCase {
     fun handle(): List<ThreadResponse>
 }
 
+@Service
 class GetOpenThreadsUseCaseImpl(
     private val threadRepository: ThreadRepository
 ): GetOpenThreadsUseCase {
