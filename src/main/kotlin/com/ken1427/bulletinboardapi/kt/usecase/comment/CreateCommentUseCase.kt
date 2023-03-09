@@ -1,7 +1,6 @@
 package com.ken1427.bulletinboardapi.kt.usecase.comment
 
 import com.ken1427.bulletinboardapi.kt.repository.CommentRepository
-import com.ken1427.bulletinboardapi.kt.repository.ThreadRepository
 import org.springframework.stereotype.Service
 
 interface CreateCommentUseCase {
